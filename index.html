@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velocity Wifi - Internet de Alta Velocidad</title>
+    <link rel="stylesheet" href="indexstyles.css" />
+    <script>
+      let currentSlide = 0;
+      let slides, totalSlides, track, dotsContainer;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        slides = document.querySelectorAll(".carousel-slide");
+        totalSlides = slides.length;
+        track = document.getElementById("carouselTrack");
+        dotsContainer = document.getElementById("carouselDots");
+
+        if (totalSlides === 0) return;
+
+        // Crear dots
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement("button");
+          dot.className = "carousel-dot";
+          if (i === 0) dot.classList.add("active");
+          dot.addEventListener("click", () => goToSlide(i));
+          dotsContainer.appendChild(dot);
+        }
+
+        // Auto avance
+        setInterval(() => {
+          moveCarousel(1);
+        }, 5000);
+      });
+
+      // 👇 FUNCIONES GLOBALES (esto arregla las flechas)
+      function moveCarousel(direction) {
+        currentSlide += direction;
+        if (currentSlide < 0) currentSlide = totalSlides - 1;
+        if (currentSlide >= totalSlides) currentSlide = 0;
+        updateCarousel();
+      }
+
+      function goToSlide(index) {
+        currentSlide = index;
+        updateCarousel();
+      }
+
+      function updateCarousel() {
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        document.querySelectorAll(".carousel-dot").forEach((dot, index) => {
+          dot.classList.toggle("active", index === currentSlide);
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo-container">
+          <img
+            src="VelocityLogoSinFondo.png"
+            alt="Velocity Wifi"
+            class="logo"
+          />
+        </div>
+        <ul class="nav-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#beneficios">Beneficios</a></li>
+          <li><a href="#planes">Planes</a></li>
+          <li><a href="#cobertura">Cobertura</a></li>
+          <li><a href="#clientes">Clientes</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+      <!-- Imagen de fondo opcional - reemplaza 'hero-bg.jpg' con tu imagen 
+      <img src="hero-bg.jpg" alt="" class="hero-bg-image" />-->
+
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Internet de Alta Velocidad para Tu Hogar o Negocio</h1>
+          <p>
+            Conectividad confiable y de calidad. Sin contratos forzosos, datos
+            ilimitados y velocidad simétrica.
+          </p>
+
+          <div class="cta-buttons">
+            <a
+              href="https://wa.me/523344510877?text=Hola%2C%20me%20interesa%20contratar%20internet%20con%20Velocity%20Wifi"
+              class="btn-primary"
+              target="_blank"
+            >
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                />
+              </svg>
+              Contratar Ahora
+            </a>
+            <a href="#planes" class="btn-secondary">
+              <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4M12 8h.01" />
+              </svg>
+              Ver Planes
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Ilimitado</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">7 Días</span>
+              <span class="stat-label">Gratis</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">0</span>
+              <span class="stat-label">Contratos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="wifi-animation">
+            <div class="wifi-ring"></div>
+            <div class="wifi-ring"></div>
+            <div class="wifi-ring"></div>
+            <div class="wifi-center"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="beneficios" class="benefits">
+      <!-- Imagen decorativa opcional - reemplaza 'benefits-image.jpg' con tu imagen -->
+      <img src="benefits-image.jpg" alt="" class="benefits-bg" />
+
+      <div class="section-header">
+        <h2 class="section-title">¿Por qué elegir Velocity Wifi?</h2>
+        <p class="section-subtitle">
+          Ofrecemos la mejor experiencia de conectividad con beneficios
+          exclusivos para nuestros clientes
+        </p>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 7h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 4h4v3h-4V4zm10 16H4V9h16v11z"
+              />
+              <path
+                d="M12 11c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"
+              />
+            </svg>
+          </div>
+          <h3>Primera Semana Gratis</h3>
+          <p>
+            Prueba nuestro servicio durante 7 días completamente gratis.
+            Experimenta la velocidad y calidad antes de comprometerte.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"
+              />
+              <path d="M8 15h8v2H8zm0-3h8v2H8zm0-3h5v2H8z" />
+            </svg>
+          </div>
+          <h3>Sin Contratos Forzosos</h3>
+          <p>
+            Cancela cuando quieras sin penalizaciones. No te atamos a contratos
+            a largo plazo, tu satisfacción es nuestra prioridad.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+              />
+              <path d="M11 7h2v6h-2zm0 8h2v2h-2z" />
+            </svg>
+          </div>
+          <h3>Datos Ilimitados</h3>
+          <p>
+            Navega sin preocuparte por límites. Disfruta de datos completamente
+            ilimitados con velocidad simétrica real.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"
+              />
+            </svg>
+          </div>
+          <h3>Cobertura Extendida</h3>
+          <p>
+            Llegamos hasta donde otros no llegan. Cobertura en zonas rurales y
+            urbanas de difícil acceso.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
+              />
+            </svg>
+          </div>
+          <h3>Cotizaciones Especiales</h3>
+          <p>
+            ¿No tenemos cobertura en tu zona? Podemos hacer una cotización
+            especial para llevarte internet.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z"
+              />
+              <path d="M12 8v5l4.25 2.52.77-1.28-3.52-2.09V8z" />
+            </svg>
+          </div>
+          <h3>Instalación Rápida</h3>
+          <p>
+            Muy bajo tiempo de espera para tu instalación. Agenda hoy y estarás
+            conectado en tiempo récord.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z"
+              />
+              <path d="M6.5 9.5h3v1h-3zm0 2h3v1h-3zm11-2h-7v5h7z" />
+            </svg>
+          </div>
+          <h3>Facilidades de Pago</h3>
+          <p>
+            Diferimos los costos de instalación para tu comodidad. Opciones
+            flexibles que se adaptan a tu presupuesto.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
+              />
+            </svg>
+          </div>
+          <h3>Descuento por Equipos</h3>
+          <p>
+            ¿Tienes equipos compatibles? Te los descontamos de la instalación.
+            Aprovecha tus dispositivos existentes.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
+              />
+            </svg>
+          </div>
+          <h3>Programa de Referencias</h3>
+          <p>
+            Recomiéndanos y gana. Por cada amigo o familiar que instale, recibe
+            1 mes gratis de servicio.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"
+              />
+            </svg>
+          </div>
+          <h3>Velocidad Simétrica</h3>
+          <p>
+            Misma velocidad de subida y bajada. Perfecto para videollamadas,
+            streaming y trabajo desde casa.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="carousel-section">
+      <div class="carousel-container">
+        <div class="section-header">
+          <h2 class="section-title">Nuestro Trabajo</h2>
+          <p class="section-subtitle">
+            Conoce nuestras instalaciones y la calidad de nuestro servicio
+          </p>
+        </div>
+
+        <div class="carousel-wrapper">
+          <div class="carousel-track" id="carouselTrack">
+            <!-- Slide 1 - Reemplaza 'carousel-1.jpg' con tus imágenes -->
+            <div class="carousel-slide">
+              <img src="rack.webp" alt="Instalación Velocity Wifi" />
+              <div class="carousel-caption">
+                <h3>Instalaciones Profesionales</h3>
+                <p>Equipos de última generación y técnicos certificados</p>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+              <img src="equipos.png" alt="Equipos Velocity Wifi" />
+              <div class="carousel-caption">
+                <h3>Tecnología de Punta</h3>
+                <p>Los mejores equipos para garantizar tu conectividad</p>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+              <img src="Cobertura.png" alt="Cobertura Velocity Wifi" />
+              <div class="carousel-caption">
+                <h3>Amplia Cobertura</h3>
+                <p>Llegamos hasta donde otros no llegan</p>
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="carousel-slide">
+              <img
+                src="compliance-test-ubiquiti.jpg"
+                alt="Clientes Satisfechos"
+              />
+              <div class="carousel-caption">
+                <h3>Clientes Satisfechos</h3>
+                <p>Tu satisfacción es nuestra prioridad</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-nav prev" onclick="moveCarousel(-1)">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="carousel-nav next" onclick="moveCarousel(1)">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </section>
+
+    <!-- Referral Program Section -->
+    <section class="referral">
+      <div class="referral-content">
+        <div class="referral-card">
+          <div class="referral-header">
+            <div class="referral-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
+                />
+              </svg>
+            </div>
+            <h2 class="referral-title">Gana 1 Mes Gratis</h2>
+            <p class="referral-subtitle">
+              Recomiéndanos con familiares y amigos
+            </p>
+          </div>
+
+          <div class="referral-steps">
+            <div class="referral-step">
+              <div class="step-number">1</div>
+              <h3>Envíanos los Datos</h3>
+              <p>
+                Manda por WhatsApp el nombre y número de teléfono de tu referido
+                antes de que instalemos
+              </p>
+            </div>
+
+            <div class="referral-step">
+              <div class="step-number">2</div>
+              <h3>Tu Referido Menciona tu Nombre</h3>
+              <p>
+                Al momento de la instalación, tu amigo o familiar debe mencionar
+                que tú lo recomendaste
+              </p>
+            </div>
+
+            <div class="referral-step">
+              <div class="step-number">3</div>
+              <h3>Recibe tu Mes Gratis</h3>
+              <p>
+                Una vez confirmada la instalación, recibes 1 mes de servicio
+                completamente gratis
+              </p>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 3rem">
+            <a
+              href="https://wa.me/523344510877?text=Hola%2C%20quiero%20referir%20a%20un%20amigo%20para%20ganar%201%20mes%20gratis"
+              class="btn-primary"
+              target="_blank"
+            >
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <path
+                  fill="currentColor"
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                />
+              </svg>
+              Referir un Amigo Ahora
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="planes" class="plans">
+      <div class="section-header">
+        <h2 class="section-title" style="color: white">Planes de Internet</h2>
+        <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.8)">
+          Elige el plan perfecto para tus necesidades. Todos incluyen datos
+          ilimitados y velocidad simétrica.
+        </p>
+      </div>
+
+      <div class="plans-grid">
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="plan-speed">10</div>
+            <div class="plan-label">Mbps</div>
+          </div>
+          <ul class="plan-features">
+            <li>Ideal para navegación básica</li>
+            <li>Redes sociales y mensajería</li>
+            <li>1-2 dispositivos conectados</li>
+            <li>Datos ilimitados y simétricos</li>
+          </ul>
+          <a
+            href="https://wa.me/523344510877?text=Hola%2C%20quiero%20información%20del%20plan%2010%20Mbps"
+            class="plan-cta"
+            target="_blank"
+            >Solicitar Plan</a
+          >
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="plan-speed">20</div>
+            <div class="plan-label">Mbps</div>
+          </div>
+          <ul class="plan-features">
+            <li>Perfecto para el hogar</li>
+            <li>Streaming en HD</li>
+            <li>3-4 dispositivos conectados</li>
+            <li>Datos ilimitados y simétricos</li>
+          </ul>
+          <a
+            href="https://wa.me/523344510877?text=Hola%2C%20quiero%20información%20del%20plan%2020%20Mbps"
+            class="plan-cta"
+            target="_blank"
+            >Solicitar Plan</a
+          >
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="plan-speed">30</div>
+            <div class="plan-label">Mbps</div>
+          </div>
+          <ul class="plan-features">
+            <li>Para familias grandes</li>
+            <li>Múltiples dispositivos</li>
+            <li>Gaming y trabajo remoto</li>
+            <li>Datos ilimitados y simétricos</li>
+          </ul>
+          <a
+            href="https://wa.me/523344510877?text=Hola%2C%20quiero%20información%20del%20plan%2030%20Mbps"
+            class="plan-cta"
+            target="_blank"
+            >Solicitar Plan</a
+          >
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="plan-speed">60</div>
+            <div class="plan-label">Mbps</div>
+          </div>
+          <ul class="plan-features">
+            <li>Máximo rendimiento</li>
+            <li>Streaming 4K sin interrupciones</li>
+            <li>Ideal para negocios</li>
+            <li>Datos ilimitados y simétricos</li>
+          </ul>
+          <a
+            href="https://wa.me/523344510877?text=Hola%2C%20quiero%20información%20del%20plan%2060%20Mbps"
+            class="plan-cta"
+            target="_blank"
+            >Solicitar Plan</a
+          >
+        </div>
+      </div>
+
+      <div
+        style="
+          text-align: center;
+          margin-top: 4rem;
+          position: relative;
+          z-index: 1;
+        "
+      >
+        <p
+          style="
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+          "
+        >
+          Los precios y costos de instalación pueden variar según tu zona
+        </p>
+        <a
+          href="https://wa.me/523344510877?text=Hola%2C%20quiero%20consultar%20el%20precio%20en%20mi%20zona"
+          class="btn-primary"
+          target="_blank"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="10" r="3" />
+            <path
+              d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"
+            />
+          </svg>
+          Consultar Precio en Mi Zona
+        </a>
+      </div>
+    </section>
+
+    <section id="cobertura" class="coverage">
+      <div class="coverage-container">
+        <div class="section-header">
+          <h2 class="section-title">Zonas de Cobertura</h2>
+          <p class="section-subtitle">
+            Brindamos servicio de internet en las siguientes localidades de
+            Jalisco
+          </p>
+        </div>
+
+        <div class="coverage-grid">
+          <div class="coverage-item">
+            <div class="coverage-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="10" r="3" />
+                <path
+                  d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"
+                />
+              </svg>
+            </div>
+            <span class="coverage-name">Casimiro Castillo</span>
+          </div>
+          <div class="coverage-item">
+            <div class="coverage-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="10" r="3" />
+                <path
+                  d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"
+                />
+              </svg>
+            </div>
+            <span class="coverage-name">El Zapotillo</span>
+          </div>
+          <div class="coverage-item">
+            <div class="coverage-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="10" r="3" />
+                <path
+                  d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"
+                />
+              </svg>
+            </div>
+            <span class="coverage-name">Lo Arado</span>
+          </div>
+          <div class="coverage-item">
+            <div class="coverage-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="10" r="3" />
+                <path
+                  d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"
+                />
+              </svg>
+            </div>
+            <span class="coverage-name">Ejido Modelo</span>
+          </div>
+          <div class="coverage-item">
+            <div class="coverage-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="10" r="3" />
+                <path
+                  d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"
+                />
+              </svg>
+            </div>
+            <span class="coverage-name">Villa Purificación</span>
+          </div>
+          <div class="coverage-item">
+            <div class="coverage-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="10" r="3" />
+                <path
+                  d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"
+                />
+              </svg>
+            </div>
+            <span class="coverage-name">Ejido Corral de Piedra</span>
+          </div>
+          <div class="coverage-item">
+            <div class="coverage-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="10" r="3" />
+                <path
+                  d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"
+                />
+              </svg>
+            </div>
+            <span class="coverage-name">San Miguel</span>
+          </div>
+          <div class="coverage-item">
+            <div class="coverage-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="10" r="3" />
+                <path
+                  d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"
+                />
+              </svg>
+            </div>
+            <span class="coverage-name">Llano del Higo</span>
+          </div>
+          <div class="coverage-item">
+            <div class="coverage-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="10" r="3" />
+                <path
+                  d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"
+                />
+              </svg>
+            </div>
+            <span class="coverage-name">Los Cimientos</span>
+          </div>
+          <div class="coverage-item">
+            <div class="coverage-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="10" r="3" />
+                <path
+                  d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"
+                />
+              </svg>
+            </div>
+            <span class="coverage-name">Zapotán</span>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem">
+          <p
+            style="
+              font-size: 1.15rem;
+              color: #555;
+              margin-bottom: 1.5rem;
+              max-width: 600px;
+              margin-left: auto;
+              margin-right: auto;
+            "
+          >
+            <strong>¿No ves tu localidad?</strong> No te preocupes, llegamos
+            hasta donde otros no llegan. Podemos hacer una cotización especial
+            para tu zona.
+          </p>
+          <a
+            href="https://wa.me/523344510877?text=Hola%2C%20quiero%20verificar%20si%20tienen%20cobertura%20en%20mi%20zona"
+            class="btn-primary"
+            target="_blank"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            Solicitar Cotización Especial
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Existing Customers Section -->
+    <section id="clientes" class="existing-customers">
+      <div class="existing-customers-content">
+        <div class="section-header">
+          <h2 class="section-title" style="color: white">¿Ya Eres Cliente?</h2>
+          <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.8)">
+            Accede a nuestros servicios exclusivos para clientes
+          </p>
+        </div>
+
+        <div class="customer-actions">
+          <a
+            href="https://wa.me/523344510877?text=Hola%2C%20soy%20cliente%20y%20quiero%20realizar%20un%20pago"
+            class="customer-card"
+            target="_blank"
+          >
+            <div class="customer-card-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="5" width="20" height="14" rx="2" />
+                <path d="M2 10h20" />
+              </svg>
+            </div>
+            <h3>Realizar Pago</h3>
+            <p>
+              Paga tu mensualidad de forma rápida y segura. Te ayudamos con el
+              proceso.
+            </p>
+            <span class="customer-card-button">Pagar Ahora</span>
+          </a>
+
+          <a
+            href="https://wa.me/523344510877?text=Hola%2C%20soy%20cliente%20y%20necesito%20asistencia%20técnica"
+            class="customer-card"
+            target="_blank"
+          >
+            <div class="customer-card-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                />
+              </svg>
+            </div>
+            <h3>Asistencia Técnica</h3>
+            <p>
+              ¿Tienes problemas con tu conexión? Nuestro equipo técnico está
+              listo para ayudarte.
+            </p>
+            <span class="customer-card-button">Solicitar Soporte</span>
+          </a>
+
+          <a
+            href="https://wa.me/523344510877?text=Hola%2C%20soy%20cliente%20y%20quiero%20referir%20a%20alguien"
+            class="customer-card"
+            target="_blank"
+          >
+            <div class="customer-card-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
+                />
+              </svg>
+            </div>
+            <h3>Referir y Ganar</h3>
+            <p>
+              Recomiéndanos con un amigo o familiar y gana 1 mes gratis de
+              servicio.
+            </p>
+            <span class="customer-card-button">Referir Ahora</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="contact">
+      <div class="contact-content">
+        <div class="section-header">
+          <h2 class="section-title" style="color: white">Contáctanos</h2>
+          <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9)">
+            Estamos listos para conectarte. Solicita tu instalación hoy mismo.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+                />
+              </svg>
+            </div>
+            <h3>Teléfono</h3>
+            <p>+52 33 4451 0877</p>
+            <p style="margin-top: 0.5rem; font-size: 0.95rem">
+              Llama directamente
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  fill="white"
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                />
+              </svg>
+            </div>
+            <h3>WhatsApp</h3>
+            <p>+52 33 4451 0877</p>
+            <p style="margin-top: 0.5rem; font-size: 0.95rem">
+              Respuesta inmediata
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                />
+              </svg>
+            </div>
+            <h3>Dirección</h3>
+            <p>Avenida El Zapotillo Sur #8</p>
+            <p style="margin-top: 0.5rem; font-size: 0.95rem">
+              Jalisco, México
+            </p>
+          </div>
+        </div>
+
+        <a
+          href="https://wa.me/523344510877?text=Hola%2C%20quiero%20contratar%20internet%20Velocity%20Wifi"
+          class="btn-primary"
+          style="margin-top: 2rem; background: white; color: #0077b6"
+          target="_blank"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path
+              fill="currentColor"
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+            />
+          </svg>
+          Solicitar Instalación Ahora
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <a href="privacidad.html"style="color: white">Política de Privacidad</a> |
+      <a href="terminos.html"style="color: white">Términos y Condiciones</a> |
+      <a href="cookies.html"style="color: white">Aviso de Cookies</a>
+      <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem">
+        Velocity Wifi
+      </p>
+      <p>&copy; 2026 Velocity Wifi. Todos los derechos reservados.</p>
+    </footer>
+
+    <a href="tel:+523344510877" class="phone-float">
+      <span class="float-label">Llama Ahora</span>
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+        />
+      </svg>
+    </a>
+
+    <a
+      href="https://wa.me/523344510877?text=Hola%2C%20necesito%20información%20sobre%20Velocity%20Wifi"
+      class="whatsapp-float"
+      target="_blank"
+    >
+      <span class="float-label">WhatsApp</span>
+      <svg viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+        />
+      </svg>
+    </a>
+  </body>
+</html>
