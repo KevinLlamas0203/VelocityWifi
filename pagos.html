@@ -5,8 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Métodos de Pago | Velocity Wifi</title>
 
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="styles.css">
 
+    <style>
+        /* Estilos adicionales para elementos nuevos */
+        .btn-pay {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #005f99, #0d6efd);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: opacity 0.2s, transform 0.1s;
+            box-shadow: 0 4px 14px rgba(13,110,253,0.35);
+        }
+
+        .btn-pay:hover {
+            opacity: 0.88;
+            transform: translateY(-2px);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 315px;
+            margin: 18px auto 4px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.13);
+            aspect-ratio: 9 / 16;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -19,34 +59,27 @@
         A continuación se detallan los métodos de pago disponibles para la liquidación del servicio de internet de Velocity Wifi.
     </p>
 
-    <h2>💳 Datos del beneficiario</h2>
-    <div class="payment-box">
-        <p><span class="highlight">Beneficiario:</span> Kevin Samuel Llamas García</p>
+    <!-- PAGO EN LÍNEA -->
+    <h2>💳 Pago en línea</h2>
+    <div class="card">
+        <p>Realiza tu pago de forma rápida y segura desde cualquier dispositivo a través de nuestro portal de pagos:</p>
+        <a class="btn-pay" href="https://velocity.pagoralia.com/wisphub" target="_blank" rel="noopener">
+            💳 Pagar en línea
+        </a>
+        <p style="margin-top:20px;"><span class="highlight">¿Cómo realizar tu pago? — Tutorial:</span></p>
+        <div class="video-wrapper">
+            <iframe
+                src="https://www.youtube.com/embed/bhombFPncAM"
+                title="Tutorial pago en línea Velocity Wifi"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
 
-    <h2>✔️ Transferencia bancaria</h2>
-    <div class="payment-box">
-        <p><span class="highlight">Banco:</span> BBVA</p>
-        <p><span class="highlight">CLABE Interbancaria:</span><br>
-            012 180 015 715 597 154
-        </p>
-        <p>
-            Puedes realizar la transferencia desde cualquier banco.
-        </p>
-    </div>
-
-    <h2>✔️ Depósito bancario</h2>
-    <div class="payment-box">
-        <p>
-            Depósito en BBVA, OXXO, Kiosko u otros puntos autorizados.
-        </p>
-        <p><span class="highlight">Número de tarjeta:</span><br>
-            4152 3141 1694 5224
-        </p>
-    </div>
-
+    <!-- PAGO EN EFECTIVO -->
     <h2>✔️ Pago en efectivo</h2>
-    <div class="payment-box">
+    <div class="card">
         <p>
             <span class="highlight">Lugar:</span><br>
             Dulcería Sagui<br>
@@ -54,23 +87,17 @@
         </p>
     </div>
 
+    <!-- FECHAS -->
     <h2>🟡 Fechas de pago</h2>
-    <div class="payment-box">
+    <div class="card">
         <p>
             Los pagos deberán realizarse <strong>del día 25 al día 1</strong>, siendo esta última la fecha límite de pago.
         </p>
     </div>
 
-    <div class="warning">
-        <p>
-            📌 <strong>Importante:</strong><br>
-            Después de realizar tu pago, envía siempre el comprobante por WhatsApp para su validación y correcta aplicación.
-        </p>
-    </div>
-
     <footer>
         <p><strong>Velocity Wifi</strong></p>
-        <p>Última actualización: Enero 2026</p>
+        <p>Última actualización: Marzo 2026</p>
     </footer>
 
 </div>
